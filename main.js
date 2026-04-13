@@ -81,7 +81,7 @@ function usernameToEmail(username) {
     throw new Error('Introduce un usuario válido.');
   }
 
-  return `${localPart}@tracatra.local`;
+  return `${localPart}@tracatra.com`;
 }
 
 function getBalance() {
@@ -387,6 +387,7 @@ function initAuthPage() {
 
   loginForm?.addEventListener('submit', async event => {
     event.preventDefault();
+    console.log('submit login interceptado');
 
     const username = ($('#login-username')?.value || '').trim().toLowerCase();
     const password = $('#login-password')?.value || '';
@@ -407,7 +408,7 @@ function initAuthPage() {
 
   registerForm?.addEventListener('submit', async event => {
     event.preventDefault();
-
+    console.log('submit registro interceptado');
     const username = ($('#register-username')?.value || '').trim().toLowerCase();
     const password = $('#register-password')?.value || '';
 
@@ -973,18 +974,23 @@ function redirectIfLoggedOut() {
 }
 
 async function initPage() {
+  console.log('initPage arrancando');
+
   try {
     await fetchMe();
+    console.log('fetchMe ok', currentUser);
   } catch (error) {
     currentUser = null;
-    console.error(error);
+    console.error('fetchMe error', error);
   }
 
   updateWalletUI();
 
   const page = getCurrentPage();
+  console.log('page actual', page);
 
   if (page === PAGE_IDS.index) {
+    console.log('iniciando auth page');
     initAuthPage();
   } else {
     if (!currentUser) {
