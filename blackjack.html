@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tracatra - Blackjack</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="blackjack">
+<header>
+  <div class="brand">
+    <h1>TRACATRA</h1>
+    <p>No te pases que me quedo tu dinero.</p>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li class="dropdown">
+      <a href="#">Juegos</a>
+      <div class="dropdown-content">
+        <a href="ruleta.html">Ruleta</a>
+        <a href="blackjack.html" class="active">Blackjack</a>
+        <a href="slots.html">Slots</a>
+      </div>
+    </li>
+    <li><a href="cartera.html">Cartera</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section class="hero">
+    <div>
+      <span class="eyebrow">Blackjack</span>
+      <h2>Desafía a Pabloxampa y pierde tu dinero</h2>
+      <p>Sabes jugar perfectamente, no hace falta que te explique que esta amañado y vas a perder</p>
+      <div class="hero-buttons">
+        <span class="button">Saldo: <strong data-wallet id="blackjack-balance"></strong> créditos</span>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="./img/black.png" alt="Mesa de blackjack" loading="lazy">
+    </div>
+  </section>
+
+  <section class="board">
+    <div class="section-row">
+      <div>
+        <h3>Banca</h3>
+        <div id="dealer-cards"></div>
+        <p>Total: <strong id="dealer-total">0</strong></p>
+      </div>
+      <div>
+        <h3>Jugador</h3>
+        <div id="player-cards"></div>
+        <p>Total: <strong id="player-total">0</strong></p>
+      </div>
+    </div>
+
+    <div class="buttons-row">
+      <label class="bet-label">
+        Apuesta
+        <input id="blackjack-bet" type="number" min="50" value="100">
+      </label>
+      <button id="blackjack-place-bet" class="button">Apostar</button>
+      <button id="blackjack-hit" class="button" disabled>Pedir</button>
+      <button id="blackjack-stand" class="button" disabled>Plantarse</button>
+    </div>
+
+    <div class="status-box">
+      <strong>Estado del juego</strong>
+      <span id="blackjack-status">Pulsa Reiniciar para empezar.</span>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Proyecto escolar ficticio - Tracatra</p>
+</footer>
+
+<script type="module" src="main.js"></script>
+</body>
+</html> 

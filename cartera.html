@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tracatra - Cartera</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="cartera">
+<header>
+  <div class="brand">
+    <h1>TRACATRA</h1>
+    <p>Controla tu saldo y recarga créditos con packs exclusivos.</p>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li class="dropdown">
+      <a href="#">Juegos</a>
+      <div class="dropdown-content">
+        <a href="ruleta.html">Ruleta</a>
+        <a href="blackjack.html">Blackjack</a>
+        <a href="slots.html">Slots</a>
+      </div>
+    </li>
+    <li><a href="cartera.html" class="active">Cartera</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section class="hero">
+    <div>
+      <span class="eyebrow">Cartera</span>
+      <h2>Saldo disponible para todos tus juegos</h2>
+      <p>Actualiza tu crédito con packs rápidos. Todavía te queda dinero por perder.</p>
+      <div class="hero-buttons">
+        <span class="button">Saldo: <strong data-wallet id="wallet-balance"></strong> créditos</span>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://www.shutterstock.com/image-photo/poker-cards-royal-flush-cash-600nw-2139006867.jpg" alt="Cartera de casino" loading="lazy">
+    </div>
+  </section>
+
+  <section class="board">
+    <h2>Packs disponibles</h2>
+    <div class="form-group">
+      <label for="wallet-password">Contraseña para canjear</label>
+      <input id="wallet-password" type="password" placeholder="Introduce la contraseña">
+      <small>La contraseña para canjear packs es <strong>gnHFykla8fNmÑmwPo0lant3IckkCk67QmeMhtrovlanuekxk35</strong>.</small>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <img src="https://img.freepik.com/vector-premium/medalla-deportiva-bronce-ganadores-cinta-roja-trofeo-tercer-lugar-insignias-honor_599062-3503.jpg?semt=ais_incoming&w=740&q=80" alt="Pack Bronce">
+        <h3>Pack Bronce</h3>
+        <p>+500 créditos instantáneos.</p>
+        <button type="button" class="button" data-pack="500">Canjear</button>
+      </article>
+      <article class="card">
+        <img src="https://img.freepik.com/vector-premium/medalla-plata-estrella-ilustracion-formas-geometricas_599062-9008.jpg?semt=ais_incoming&w=740&q=80" alt="Pack Plata">
+        <h3>Pack Plata</h3>
+        <p>+1500 créditos para seguir jugando.</p>
+        <button type="button" class="button" data-pack="1500">Canjear</button>
+      </article>
+      <article class="card">
+        <img src="https://img.freepik.com/vector-premium/medalla-oro-ganador-cintas-rojas-aisladas_53562-5227.jpg" alt="Pack Oro">
+        <h3>Pack Oro</h3>
+        <p>+3500 créditos para apuestas grandes.</p>
+        <button type="button" class="button" data-pack="3500">Canjear</button>
+      </article>
+    </div>
+    <div class="status-box">
+      <strong>Mensaje</strong>
+      <p id="wallet-message">Selecciona un pack para recargar.</p>
+    </div>
+  </section>
+
+  <section class="board">
+    <h2>Consejos de juego</h2>
+    <ol>
+      <li>Comienza con apuestas moderadas y observa el estado del saldo.</li>
+      <li>Recarga solo cuando lo necesites para seguir jugando con calma.</li>
+      <li>El saldo se mantiene mientras navegues entre páginas.</li>
+    </ol>
+  </section>
+</main>
+
+<footer>
+  <p>Proyecto escolar ficticio - Tracatra</p>
+</footer>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>

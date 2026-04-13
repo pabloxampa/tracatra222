@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tracatra - Slots</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="slots">
+<header>
+  <div class="brand">
+    <h1>TRACATRA</h1>
+    <p>Las verdaderas slots de los SIGMAS</p>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li class="dropdown">
+      <a href="#">Juegos</a>
+      <div class="dropdown-content">
+        <a href="ruleta.html">Ruleta</a>
+        <a href="blackjack.html">Blackjack</a>
+        <a href="slots.html" class="active">Slots</a>
+      </div>
+    </li>
+    <li><a href="cartera.html">Cartera</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section class="hero">
+    <div>
+      <span class="eyebrow">Slots</span>
+      <h2>Gira y reza todo lo que sepas</h2>
+      <p>Elige tu apuesta, presiona girar y observa cómo los rodillos se llevan tu dinero a otro planeta</p>
+      <div class="hero-buttons">
+        <span class="button">Saldo: <strong data-wallet id="slots-balance"></strong> créditos</span>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="./img/slots.png" alt="Slots de casino" loading="lazy">
+    </div>
+  </section>
+
+  <section class="board">
+    <div id="slots-reels" class="slots-reels"></div>
+
+    <div class="buttons-row">
+      <label>
+        Apuesta
+        <input id="slots-bet" type="number" min="1" value="100" placeholder="Monto" />
+      </label>
+      <button id="slots-spin" class="button">Girar</button>
+    </div>
+
+    <div class="status-box">
+      <strong>Estado</strong>
+      <p id="slots-result">Pulsa Girar para comenzar.</p>
+    </div>
+
+    <div class="slots-paytable">
+      <strong>Tabla de pagos</strong>
+      <p>Conecta 3 o más símbolos iguales en la fila central de izquierda a derecha.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Símbolo</th>
+            <th>Probabilidad</th>
+            <th>3 iguales</th>
+            <th>4 iguales</th>
+            <th>5 iguales</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>🍒</td><td>20%</td><td>2×</td><td>6×</td><td>12×</td></tr>
+          <tr><td>🍋</td><td>20%</td><td>2×</td><td>6×</td><td>12×</td></tr>
+          <tr><td>🍊</td><td>16%</td><td>3×</td><td>8×</td><td>16×</td></tr>
+          <tr><td>🍉</td><td>14%</td><td>4×</td><td>10×</td><td>22×</td></tr>
+          <tr><td>⭐</td><td>12%</td><td>5×</td><td>12×</td><td>26×</td></tr>
+          <tr><td>🔔</td><td>10%</td><td>8×</td><td>18×</td><td>36×</td></tr>
+          <tr><td>7️⃣</td><td>8%</td><td>12×</td><td>30×</td><td>80×</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Proyecto escolar ficticio - Tracatra</p>
+</footer>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>
