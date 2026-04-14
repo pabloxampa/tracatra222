@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tracatra - Casino Virtual</title>
+  <title>Tracatra - Ruleta</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body data-page="index">
+<body data-page="ruleta">
 <header>
   <div class="brand">
     <h1>TRACATRA</h1>
-    <p>Casino virtual premium para tus desafíos de juego</p>
+    <p>Gira, Gira y Gira. ¡Pero no paga!.</p>
   </div>
 </header>
 
 <nav>
   <ul>
-    <li><a href="index.html" class="active">Inicio</a></li>
+    <li><a href="index.html">Inicio</a></li>
     <li class="dropdown">
       <a href="#">Juegos</a>
       <div class="dropdown-content">
-        <a href="ruleta.html">Ruleta</a>
+        <a href="ruleta.html" class="active">Ruleta</a>
         <a href="blackjack.html">Blackjack</a>
         <a href="slots.html">Slots</a>
       </div>
@@ -32,90 +32,128 @@
 <main>
   <section class="hero">
     <div>
-      <span class="eyebrow">Bienvenido a Tracatra</span>
-      <h2>Vive una experiencia de casino realista</h2>
-      <p>Prueba tus habilidades en blackjack, siente la emoción de la ruleta y disfruta del giro de las slots. Regístrate o inicia sesión para jugar y controlar tu saldo.</p>
+      <span class="eyebrow">Ruleta</span>
+      <h2>Gira la rueda y calla</h2>
+      <p>Elige número, color o par/impar. La ruleta decidirá si multiplicas o se lo queda.</p>
       <div class="hero-buttons">
-        <a class="button primary" href="blackjack.html">Jugar Blackjack</a>
-        <a class="button" href="ruleta.html">Probar Ruleta</a>
+        <span class="button">Saldo: <strong data-wallet id="roulette-balance"></strong> créditos</span>
       </div>
     </div>
     <div class="hero-image">
-      <img src="./img/LOGO.png" alt="Casino elegante" loading="lazy">
+      <img src="./img/ruleta.png" alt="Ruleta de casino" loading="lazy">
     </div>
   </section>
 
-  <section class="auth-section">
-    <div class="auth-panel">
-      <div class="auth-header">
-        <span class="eyebrow">Cuenta de usuario</span>
-        <h2>Inicia sesión o crea tu usuario</h2>
-        <p>Tu cuenta almacena el saldo en Supabase. El acceso se hace con usuario y contraseña.</p>
+  <section class="board roulette-board">
+    <div class="roulette-grid">
+      <div class="roulette-panel">
+        <div class="roulette-top-row">
+          <div class="roulette-summary compact">
+            <p class="label">Último resultado</p>
+            <div class="result-pill" id="roulette-wheel-display">-</div>
+            <p class="label">Estado</p>
+            <p id="roulette-result">Selecciona apuesta y pulsa Girar.</p>
+          </div>
+
+          <div class="roulette-main-zone">
+            <div class="roulette-wheel-wrapper">
+              <div class="roulette-wheel" aria-hidden="true"></div>
+              <div class="wheel-pointer"></div>
+              <div class="wheel-center">TRACATRA</div>
+            </div>
+
+            <div class="roulette-controls">
+              <button id="roulette-spin" class="button small roulette-spin-button">Girar</button>
+
+              <div class="roulette-chip-row compact">
+                <button type="button" class="bet-chip active" data-value="50">50</button>
+                <button type="button" class="bet-chip" data-value="100">100</button>
+                <button type="button" class="bet-chip" data-value="250">250</button>
+                <button type="button" class="bet-chip" data-value="500">500</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="roulette-board-layout">
+          <p class="board-title">Tablero de apuestas</p>
+
+          <div class="roulette-table">
+            <div class="roulette-side-cells">
+              <button type="button" class="roulette-board-cell green wide" data-number="0" data-bet="0" data-type="number">
+                <span class="board-number">0</span>
+                <span class="board-bet"></span>
+              </button>
+            </div>
+
+            <div class="roulette-board-grid" id="roulette-board-grid"></div>
+
+            <div class="roulette-column-bets">
+              <button type="button" class="bet-area" data-type="column" data-target="1st">
+                <span class="bet-area-label">2 a 1</span>
+                <span class="bet-area-amount"></span>
+              </button>
+              <button type="button" class="bet-area" data-type="column" data-target="2nd">
+                <span class="bet-area-label">2 a 1</span>
+                <span class="bet-area-amount"></span>
+              </button>
+              <button type="button" class="bet-area" data-type="column" data-target="3rd">
+                <span class="bet-area-label">2 a 1</span>
+                <span class="bet-area-amount"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="roulette-dozens" id="roulette-bet-options">
+            <button type="button" class="bet-area" data-type="dozen" data-target="1-12">
+              <span class="bet-area-label">1ª 12</span>
+              <span class="bet-area-amount"></span>
+            </button>
+            <button type="button" class="bet-area" data-type="dozen" data-target="13-24">
+              <span class="bet-area-label">2ª 12</span>
+              <span class="bet-area-amount"></span>
+            </button>
+            <button type="button" class="bet-area" data-type="dozen" data-target="25-36">
+              <span class="bet-area-label">3ª 12</span>
+              <span class="bet-area-amount"></span>
+            </button>
+          </div>
+
+          <div class="roulette-outside-bets">
+            <button type="button" class="bet-area" data-type="range" data-target="1-18">
+              <span class="bet-area-label">1-18</span>
+              <span class="bet-area-amount"></span>
+            </button>
+            <button type="button" class="bet-area" data-type="parity" data-target="even">
+              <span class="bet-area-label">EVEN</span>
+              <span class="bet-area-amount"></span>
+            </button>
+            <button type="button" class="bet-area red" data-type="color" data-target="red">
+              <span class="bet-area-label">Rojo</span>
+              <span class="bet-area-amount"></span>
+            </button>
+            <button type="button" class="bet-area black" data-type="color" data-target="black">
+              <span class="bet-area-label">Negro</span>
+              <span class="bet-area-amount"></span>
+            </button>
+            <button type="button" class="bet-area" data-type="parity" data-target="odd">
+              <span class="bet-area-label">ODD</span>
+              <span class="bet-area-amount"></span>
+            </button>
+            <button type="button" class="bet-area" data-type="range" data-target="19-36">
+              <span class="bet-area-label">19-36</span>
+              <span class="bet-area-amount"></span>
+            </button>
+          </div>
+
+          <div class="bet-summary">
+            <p>Ficha elegida: <strong id="selected-chip">50</strong> créditos</p>
+            <p>Apuestas activas: <strong id="selected-number">0</strong></p>
+            <p>Total apostado: <strong id="selected-total">0</strong> créditos</p>
+          </div>
+        </div>
       </div>
-      <div class="auth-tabs">
-        <button id="show-login" type="button" class="button secondary active">Login</button>
-        <button id="show-register" type="button" class="button secondary">Registro</button>
-      </div>
-
-      <form id="login-form" class="auth-form">
-        <div class="form-group">
-          <label for="login-username">Usuario</label>
-          <input id="login-username" name="login-username" type="text" placeholder="Usuario" required>
-        </div>
-        <div class="form-group">
-          <label for="login-password">Contraseña</label>
-          <input id="login-password" name="login-password" type="password" placeholder="Contraseña" required>
-        </div>
-        <button type="submit" class="button primary">Iniciar sesión</button>
-      </form>
-
-      <form id="register-form" class="auth-form hidden">
-        <div class="form-group">
-          <label for="register-username">Usuario</label>
-          <input id="register-username" name="register-username" type="text" placeholder="Usuario nuevo" required>
-        </div>
-        <div class="form-group">
-          <label for="register-password">Contraseña</label>
-          <input id="register-password" name="register-password" type="password" placeholder="Contraseña" required>
-        </div>
-        <button type="submit" class="button primary">Crear cuenta</button>
-      </form>
-
-      <div id="welcome-panel" class="auth-welcome hidden">
-        <p>Bienvenido, <strong id="welcome-name"></strong>. Tu saldo actual es <span data-wallet id="welcome-balance"></span> créditos.</p>
-        <button id="logout-button" type="button" class="button">Cerrar sesión</button>
-      </div>
-
-      <p id="auth-message" class="status-text"></p>
     </div>
-  </section>
-
-  <section class="cards">
-    <article class="card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAYpVHAHoEOaxrNxZs5Bya0NJC1qiGzaoGMA&s" alt="Blackjack" loading="lazy">
-      <h3>Blackjack</h3>
-      <p>Consigue 21, planta o pide carta y vence a la banca con estrategia.</p>
-      <a class="button" href="blackjack.html">Entrar</a>
-    </article>
-    <article class="card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzlaDd9hTlSZY-uOCPzI1PXkzH1YcklNYPCQ&s" alt="Ruleta" loading="lazy">
-      <h3>Ruleta</h3>
-      <p>Apuesta por número, color o par/impar y descubre si la bola cae en tu suerte.</p>
-      <a class="button" href="ruleta.html">Entrar</a>
-    </article>
-    <article class="card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrMtZrzoPOUTrLpagQ9U7foFppiDlbr3FufQ&s" alt="Slots" loading="lazy">
-      <h3>Slots</h3>
-      <p>Gira los rodillos y busca combinaciones para llevarte el gran premio.</p>
-      <a class="button" href="slots.html">Entrar</a>
-    </article>
-  </section>
-
-  <section class="info-grid">
-    <article>
-      <h2>Tu saldo te acompaña</h2>
-      <p>Controla tus créditos desde la cartera y recarga con packs exclusivos para seguir jugando.</p>
-    </article>
   </section>
 </main>
 
@@ -123,6 +161,6 @@
   <p>Proyecto escolar ficticio - Tracatra</p>
 </footer>
 
-<script type="module" src="main.js"></script>
+<script src="main.js" defer></script>
 </body>
 </html>
