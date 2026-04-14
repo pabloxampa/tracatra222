@@ -210,20 +210,33 @@ async function fetchProfile(userId) {
 }
 
 async function fetchMe() {
-  const { data: authData, error } = await supabase.auth.getUser();
-
   if (!supabase) {
-  currentUser = null;
-  return null;
-}
-  
-  if (error || !authData?.user) {
     currentUser = null;
     return null;
   }
 
-  currentUser = await fetchProfile(authData.user.id);
-  return currentUser;
+  console.log('fetchMe: antes de getSession');
+
+  const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+
+  console.log('fetchMe: respuesta getSession', sessionData, sessionError);
+
+  if (sessionError || !sessionData?.session?.user) {
+    currentUser = null;
+    return null;
+  }
+
+  const userId = sessionData.session.user.id;
+
+  try {
+    currentUser = await fetchProfile(userId);
+    console.log('fetchMe: perfil cargado', currentUser);
+    return currentUser;
+  } catch (error) {
+    console.error('fetchMe: error cargando perfil', error);
+    currentUser = null;
+    return null;
+  }
 }
 
 async function upsertCurrentProfile(userId, username, balance = DEFAULT_BALANCE) {
@@ -988,11 +1001,33 @@ async function initPage() {
 
   try {
     await fetchMe();
-    console.log('fetchMe ok', currentUser);
+    console.log('fetchMe terminado', currentUser);
   } catch (error) {
     currentUser = null;
     console.error('fetchMe error', error);
   }
+
+  updateWalletUI();
+
+  const page = getCurrentPage();
+  console.log('page actual', page);
+
+  if (page === PAGE_IDS.index) {
+    console.log('iniciando auth page');
+    initAuthPage();
+  } else {
+    if (!currentUser) {
+      redirectIfLoggedOut();
+      return;
+    }
+    ensureTopBalanceWidget();
+  }
+
+  if (page === PAGE_IDS.cartera) initWalletPage();
+  if (page === PAGE_IDS.blackjack) initBlackjack();
+  if (page === PAGE_IDS.ruleta) initRoulette();
+  if (page === PAGE_IDS.slots) initSlots();
+}
 
   updateWalletUI();
 
