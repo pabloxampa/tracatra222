@@ -212,6 +212,11 @@ async function fetchProfile(userId) {
 async function fetchMe() {
   const { data: authData, error } = await supabase.auth.getUser();
 
+  if (!supabase) {
+  currentUser = null;
+  return null;
+}
+  
   if (error || !authData?.user) {
     currentUser = null;
     return null;
