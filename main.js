@@ -1,5 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 
+console.log('TRACATRA VERSION NUEVA 777');
+alert('TRACATRA VERSION NUEVA 777');
+
 const DEFAULT_BALANCE = 5000;
 const REDEEM_PASSWORD = 'holachicos';
 const PAGE_IDS = {
