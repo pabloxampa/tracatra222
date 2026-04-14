@@ -38,11 +38,16 @@ const SLOTS_WEIGHTED_SYMBOLS = SLOTS_SYMBOL_CONFIG.flatMap(item =>
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-if (!supabaseUrl || !supabaseKey) {
+console.log('URL:', supabaseUrl);
+console.log('KEY OK:', !!supabaseKey);
+
+let supabase = null;
+
+if (supabaseUrl && supabaseKey) {
+  supabase = createClient(supabaseUrl, supabaseKey);
+} else {
   console.error('Faltan VITE_SUPABASE_URL o VITE_SUPABASE_ANON_KEY');
 }
-
-const supabase = createClient(supabaseUrl, supabaseKey);
 const FORMATTER = new Intl.NumberFormat('es-ES');
 
 let currentUser = null;
