@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 
 const DEFAULT_BALANCE = 5000;
-const REDEEM_PASSWORD = 'gnHFykla8fNmÑmwPo0lant3IckkCk67QmeMhtrovlanuekxk35';
+const REDEEM_PASSWORD = 'holachicos';
 const PAGE_IDS = {
   index: 'index',
   cartera: 'cartera',
